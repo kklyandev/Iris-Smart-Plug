@@ -21,7 +21,7 @@ metadata {
 		capability "Actuator"
 		capability "Switch"
 		capability "Power Meter"
-        	capability "Energy Meter"
+		capability "Energy Meter"
 		capability "Configuration"
 		capability "Refresh"
 		capability "Sensor"
@@ -30,12 +30,12 @@ metadata {
 		attribute "heartbeat", "string"     
         	attribute "timerStart", "number"
 		
-        	attribute "energyDisplay", "string"
-        	attribute "elapsedTimeDisplay", "string"
-        	
-        	command "resetEnergyUsage"
+		attribute "energyDisplay", "string"
+		attribute "elapsedTimeDisplay", "string"
+	
+		command "resetEnergyUsage"
 			
-        	fingerprint profileId: "0104", inClusters: "0000 0003 0004 0005 0006 0B04 0B05 FC03", outClusters: "0019", manufacturer: "CentraLite",  model: "3210-L", deviceJoinName: "Outlet"
+		fingerprint profileId: "0104", inClusters: "0000 0003 0004 0005 0006 0B04 0B05 FC03", outClusters: "0019", manufacturer: "CentraLite",  model: "3210-L", deviceJoinName: "Outlet"
 		//fingerprint profileId: "0104", inClusters: "0000,0003,0004,0005,0006,0B04,0B05", outClusters: "0019", manufacturer: "CentraLite",  model: "3200", deviceJoinName: "Outlet"
 		//fingerprint profileId: "0104", inClusters: "0000,0003,0004,0005,0006,0B04,0B05", outClusters: "0019", manufacturer: "CentraLite",  model: "3200-Sgb", deviceJoinName: "Outlet"
 		//fingerprint profileId: "0104", inClusters: "0000,0003,0004,0005,0006,0B04,0B05", outClusters: "0019", manufacturer: "CentraLite",  model: "4257050-RZHAC", deviceJoinName: "Outlet"
@@ -77,22 +77,22 @@ metadata {
 		}
         
 		valueTile("energyDisplay", "device.energyDisplay", width: 4, height: 1, decoration: "flat") {
-        	state "default", label:'Energy used: ${currentValue}', unit: "kWh"
+			state "default", label:'Energy used: ${currentValue}', unit: "kWh"
         }
-        standardTile("refresh", "device.switch", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
-            state "default", label:"", action:"refresh.refresh", icon:"st.secondary.refresh"
+	standardTile("refresh", "device.switch", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
+        	state "default", label:"", action:"refresh.refresh", icon:"st.secondary.refresh"
         }
         
-        standardTile("resetUsage", "command.resetEnergyUsage", decoration: "flat", width: 2, height: 2){
-        	state "default", action: "resetEnergyUsage", label:'reset kWh'
+	standardTile("resetUsage", "command.resetEnergyUsage", decoration: "flat", width: 2, height: 2){
+		state "default", action: "resetEnergyUsage", label:'reset kWh'
         }        
         
-        valueTile("elapsedTimeDisplay", "device.elapsedTimeDisplay", decoration: "flat", width: 4, height: 1){
-        	state "default", label: 'Time: ${currentValue}', unit: "h"
+	valueTile("elapsedTimeDisplay", "device.elapsedTimeDisplay", decoration: "flat", width: 4, height: 1){
+		state "default", label: 'Time: ${currentValue}', unit: "h"
         }      
         
-        main "switch"
-        details(["switch","energyDisplay","refresh","power","elapsedTimeDisplay","resetUsage"])
+	main "switch"
+	details(["switch","energyDisplay","refresh","power","elapsedTimeDisplay","resetUsage"])
 	}
 }
 
