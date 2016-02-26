@@ -28,7 +28,7 @@ metadata {
 		
 		// indicates that device keeps track of heartbeat (in state.heartbeat)
 		attribute "heartbeat", "string"     
-        	attribute "timerStart", "number"
+		attribute "timerStart", "number"
 		
 		attribute "energyDisplay", "string"
 		attribute "elapsedTimeDisplay", "string"
@@ -78,21 +78,22 @@ metadata {
         
 		valueTile("energyDisplay", "device.energyDisplay", width: 4, height: 1, decoration: "flat") {
 			state "default", label:'Energy used: ${currentValue}', unit: "kWh"
-        }
-	standardTile("refresh", "device.switch", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
-        	state "default", label:"", action:"refresh.refresh", icon:"st.secondary.refresh"
-        }
+        	}
+        	
+		standardTile("refresh", "device.switch", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
+			state "default", label:"", action:"refresh.refresh", icon:"st.secondary.refresh"
+		}
         
-	standardTile("resetUsage", "command.resetEnergyUsage", decoration: "flat", width: 2, height: 2){
-		state "default", action: "resetEnergyUsage", label:'reset kWh'
-        }        
+		standardTile("resetUsage", "command.resetEnergyUsage", decoration: "flat", width: 2, height: 2){
+			state "default", action: "resetEnergyUsage", label:'reset kWh'
+		}        
         
-	valueTile("elapsedTimeDisplay", "device.elapsedTimeDisplay", decoration: "flat", width: 4, height: 1){
-		state "default", label: 'Time: ${currentValue}', unit: "h"
-        }      
+		valueTile("elapsedTimeDisplay", "device.elapsedTimeDisplay", decoration: "flat", width: 4, height: 1){
+			state "default", label: 'Time: ${currentValue}', unit: "h"
+		}      
         
-	main "switch"
-	details(["switch","energyDisplay","refresh","power","elapsedTimeDisplay","resetUsage"])
+		main "switch"
+		details(["switch","energyDisplay","refresh","power","elapsedTimeDisplay","resetUsage"])
 	}
 }
 
