@@ -85,7 +85,7 @@ metadata {
 		}
         
 		standardTile("resetUsage", "command.resetEnergyUsage", decoration: "flat", width: 2, height: 1){
-			state "default", action: "resetEnergyUsage", label:'reset kWh', icon:"st.Health & Wellness.health7"
+			state "default", action: "resetEnergyUsage", label:'Reset kWh', icon:"st.Health & Wellness.health7"
 		}        
         
 		valueTile("elapsedTimeDisplay", "device.elapsedTimeDisplay", decoration: "flat", width: 4, height: 1){
