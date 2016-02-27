@@ -80,12 +80,12 @@ metadata {
 			state "default", label:'Energy used: ${currentValue}', unit: "kWh"
         	}
         	
-		standardTile("refresh", "device.switch", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
+		standardTile("refresh", "device.switch", inactiveLabel: false, decoration: "flat", width: 2, height: 1) {
 			state "default", label:"", action:"refresh.refresh", icon:"st.secondary.refresh"
 		}
         
-		standardTile("resetUsage", "command.resetEnergyUsage", decoration: "flat", width: 2, height: 2){
-			state "default", action: "resetEnergyUsage", label:'reset kWh'
+		standardTile("resetUsage", "command.resetEnergyUsage", decoration: "flat", width: 2, height: 1){
+			state "default", action: "resetEnergyUsage", label:'reset kWh', icon:"st.Health & Wellness.health7"
 		}        
         
 		valueTile("elapsedTimeDisplay", "device.elapsedTimeDisplay", decoration: "flat", width: 4, height: 1){
@@ -93,7 +93,7 @@ metadata {
 		}      
         
 		main "switch"
-		details(["switch","energyDisplay","refresh","power","elapsedTimeDisplay","resetUsage"])
+		details(["switch","energyDisplay","resetUsage","power","elapsedTimeDisplay","refresh"])
 	}
 }
 
