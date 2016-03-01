@@ -142,7 +142,18 @@ def parse(String description) {
 
 def calculateAndShowEnergy()
 {
-    def recentEvents = device.statesSince("power", new Date()-1, [max: 2]).collect {[value: it.value as float, date: it.date]}        	
+    try
+    {
+	def recentEvents = device.statesSince("power", new Date()-1, [max: 2]).collect {[value: it.value as float, date: it.date]}        	
+    }
+    catch (e)
+    {
+    	log.debug "Unable to get the last 2 power values"
+    }
+    
+    if (recentEvents == null || recentEvents[0] == null || recentEvents[1] == null)
+    	return
+    	
     def deltaT = (recentEvents[0].date.getTime() - recentEvents[1].date.getTime()) // time since last "power" event in milliseconds
     deltaT = deltaT / 3600000 // convert to hours
     
