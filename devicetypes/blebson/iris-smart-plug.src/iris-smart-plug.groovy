@@ -142,14 +142,7 @@ def parse(String description) {
 
 def calculateAndShowEnergy()
 {
-    try
-    {
-	def recentEvents = device.statesSince("power", new Date()-1, [max: 2]).collect {[value: it.value as float, date: it.date]}        	
-    }
-    catch (e)
-    {
-    	log.debug "Unable to get the last 2 power values"
-    }
+    def recentEvents = device.statesSince("power", new Date()-1, [max: 2]).collect {[value: it.value as float, date: it.date]}        	
     
     if (recentEvents == null || recentEvents[0] == null || recentEvents[1] == null)
     	return
